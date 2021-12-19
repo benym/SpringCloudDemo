@@ -49,7 +49,7 @@ public class AccountTCCServiceImpl implements AccountTCCService {
 
     @Override
     public boolean confirm(BusinessActionContext context) {
-        // 因为try获取成功后进入confirm，意味着事务已经提交，free表的数据就没有意义了，直接删除即可
+        // 因为try获取成功后进入confirm，意味着分支状态检查通过，发起了事务提交指令，free表的数据就没有意义了，直接删除即可
         // 1. 获取事务id
         String xid = context.getXid();
         // 2. 根据id删除冻结记录
