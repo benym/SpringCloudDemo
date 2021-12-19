@@ -33,8 +33,8 @@ seata:
       group: DEFAULT_GROUP
       application: seata-tc-server # tc服务在nacos中的服务名称
       cluster: SH
-  tx-service-group: seata-demo # 事务组，根据这个获取tc服务的cluster名称
+  tx-service-group: seata-demo # 事务组，根据这个获取tc服务的cluster名称，以tx-service-group的值为key到vgroup-mapping里面找
   service:
     vgroup-mapping: # 事务组与TC服务cluster的映射关系
       seata-demo: SH
-  data-source-proxy-mode: XA
+  data-source-proxy-mode: AT
