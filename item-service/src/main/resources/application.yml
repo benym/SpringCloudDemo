@@ -12,6 +12,9 @@ spring:
     host: 127.0.0.1
     port: 6379
     password: 12345678
+canal:
+  destination: heima
+  server: 127.0.0.1:11111
 mybatis-plus:
   type-aliases-package: com.heima.item.pojo
   configuration:

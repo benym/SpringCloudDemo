@@ -1,5 +1,6 @@
 package com.heima.item.config;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.heima.item.pojo.Item;
 import com.heima.item.pojo.ItemStock;
@@ -54,5 +55,18 @@ public class RedisHandler implements InitializingBean {
             // 4.2 存入redis
             redisTemplate.opsForValue().set("stock:id:" + stock.getId(), stockJson);
         }
+    }
+
+    public void saveItem(Item item){
+        try {
+            String itemJson = MAPPER.writeValueAsString(item);
+            redisTemplate.opsForValue().set("item:id:" + item.getId(), itemJson);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deleteItemById(Long id){
+        redisTemplate.delete("item:id:" + id);
     }
 }
