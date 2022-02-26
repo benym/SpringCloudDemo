@@ -10,7 +10,8 @@ public interface AccountTCCService {
 
     // try阶段
     @TwoPhaseBusinessAction(name = "deduct", commitMethod = "confirm", rollbackMethod = "cancel")
-    void deduct(@BusinessActionContextParameter(paramName = "userId") String userId, @BusinessActionContextParameter(paramName = "money") int money);
+    void deduct(@BusinessActionContextParameter(paramName = "userId") String userId,
+                @BusinessActionContextParameter(paramName = "money") int money);
     // confirm阶段
     boolean confirm(BusinessActionContext context);
     // cancel阶段
