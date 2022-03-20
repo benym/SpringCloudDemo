@@ -24,7 +24,7 @@ public class AuthorizeFilter implements GlobalFilter {
         // 1、获取请求参数
         ServerHttpRequest request = exchange.getRequest();
         MultiValueMap<String, String> queryParams = request.getQueryParams();
-        // 2、获取参数中的authorization参数
+        // 2、获取参数中的authorization参数，这个参数在地址上显示，比如user?authorization=admin
         String auth = queryParams.getFirst("authorization");
         // 3、判断参数是否等于admin
         if("admin".equals(auth)){
