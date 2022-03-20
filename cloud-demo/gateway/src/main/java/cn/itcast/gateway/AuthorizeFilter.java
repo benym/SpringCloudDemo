@@ -28,7 +28,7 @@ public class AuthorizeFilter implements GlobalFilter {
         String auth = queryParams.getFirst("authorization");
         // 3、判断参数是否等于admin
         if("admin".equals(auth)){
-            // 4、是，放行
+            // 4、是，放行，交给下一个过滤器处理
             return chain.filter(exchange);
         }
         // 5、否，拦截
